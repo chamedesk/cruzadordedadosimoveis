@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" class="card">
+  <h2>Adicionar imóvel captado</h2>
+  <input name="codigo" placeholder="Código SP Imóvel">
+  <input name="tipo" placeholder="Tipo">
+  <input name="bairro" placeholder="Bairro">
+  <input name="cidade" placeholder="Cidade">
+  <input name="endereco" placeholder="Endereço">
+  <input name="cep" placeholder="CEP">
+  <input name="valor" placeholder="Valor">
+  <input name="area" placeholder="Área m²">
+  <input name="dormitorios" placeholder="Dormitórios">
+  <input name="vagas" placeholder="Vagas">
+  <input name="proprietario" placeholder="Proprietário">
+  <input name="telefone" placeholder="Telefone">
+  <input name="whatsapp" placeholder="WhatsApp somente números">
+  <input name="email" placeholder="Email">
+  <input name="link" placeholder="Link">
+  <button>Salvar</button>
+</form>
+{% endblock %}

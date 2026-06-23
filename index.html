@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="actions">
+  <a href="/demo">Carregar demo</a>
+  <a href="/novo">Adicionar imóvel</a>
+  <a href="/exportar">Exportar Excel</a>
+</div>
+<form class="filters">
+  <input name="bairro" placeholder="Filtrar por bairro" value="{{ bairro }}">
+  <select name="status">
+    <option value="">Todos</option>
+    <option value="novo" {% if status=='novo' %}selected{% endif %}>Novos</option>
+    <option value="ja_cadastrado" {% if status=='ja_cadastrado' %}selected{% endif %}>Já cadastrados</option>
+  </select>
+  <button>Filtrar</button>
+</form>
+<table>
+<thead><tr><th>Código</th><th>Bairro</th><th>Valor</th><th>Detalhes</th><th>Status</th><th>Contato</th></tr></thead>
+<tbody>
+{% for i in imoveis %}
+<tr>
+  <td>{{ i.codigo }}</td>
+  <td>{{ i.bairro }}</td>
+  <td>R$ {{ "{:,.2f}".format(i.valor or 0).replace(',', 'X').replace('.', ',').replace('X', '.') }}</td>
+  <td>{{ i.dormitorios }} dorm · {{ i.area }}m² · {{ i.vagas }} vaga</td>
+  <td><span class="badge {{ i.comparacao }}">{{ 'NOVO' if i.comparacao=='novo' else 'JÁ CADASTRADO' }}</span></td>
+  <td>{% if i.whatsapp %}<a target="_blank" href="https://wa.me/55{{ i.whatsapp|replace(' ','')|replace('(','')|replace(')','')|replace('-','') }}">WhatsApp</a>{% endif %}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}
