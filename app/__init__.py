@@ -1,10 +1,1 @@
-from flask import Flask
-
-def create_app():
-    app = Flask(__name__)
-
-    @app.route("/")
-    def home():
-        return "Gold Captação Online"
-
-    return app
+from .main import app
